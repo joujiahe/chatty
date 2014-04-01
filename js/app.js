@@ -1,4 +1,5 @@
 var chattyServer = 'http://api.chatty';
+// var chattyServer = 'http://ec2-54-186-222-29.us-west-2.compute.amazonaws.com/server';
 
 angular.module('app', [])
 
