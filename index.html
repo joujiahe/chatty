@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html ng-app="app" >
+    <head>
+        <title>chatty</title>
+        <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.4.2/pure-min.css">
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+        <div class="main" ng-controller="main" class="pure-g-r">
+            <div class="pure-u-1-5"></div>
+            <div class="content pure-u-3-5">
+                <h1>chatty ({{count}} users)</h1>
+                <div class="list">
+                    <ul class="">
+                        <li ng-repeat="message in messages">
+                            [ {{message.name}} ]: {{message.msg}}
+                        </li>
+                    </ul>
+                </div>
+                <form class="pure-form">
+                    <input class="pure-u-1-6" type="text" placeholder="Name..." ng-model="name">
+                    <input class="message-input pure-u-3-5" type="text" placeholder="Message..." ng-model="message">
+                    <button class="send-button pure-button pure-button-primary pure-u-1-5" ng-click="send()">Send</button>
+                </form>
+            </div>
+            <div class="pure-u-1-5"></div>
+        </div>
+        <script src="//cdn.sockjs.org/sockjs-0.3.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
+        <script src="js/app.js"></script>
+    </body>
+</html>

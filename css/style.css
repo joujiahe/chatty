@@ -1,0 +1,23 @@
+html, body, .main, .content {
+    height: 100%;
+}
+
+h1 {
+    background-color: #eee;
+    padding: 5px;
+    text-align: center;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.list {
+    height: 60%;
+    margin-bottom: 20px;
+}
+
+.list ul {
+    list-style: none;
+    padding: 0;
+    overflow-y: auto;
+    height: 100%;
+}
