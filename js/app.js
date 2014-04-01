@@ -7,11 +7,19 @@ angular.module('app', [])
     return new SockJS(chattyServer);
 }])
 
+.config([function() {
+
+}])
+
 .run([function() {
 
 }])
 
-.controller('main', ['$scope', 'sockjs', function($scope, sockjs) {
+.controller('main', ['$scope', 'sockjs', '$location', function($scope, sockjs, $location) {
+
+    $scope.channel = $location.path() && $location.path().slice(1) || 'chatty';
+    $scope.channelUrl = $location.absUrl();
+
     $scope.count = 0;
     $scope.name  = 'Guest';
     $scope.messages = [{
@@ -19,8 +27,17 @@ angular.module('app', [])
         msg:'Welome to Chatty!',
     }];
 
+    $scope.subscribe = function() {
+        var message = {
+            channel: $scope.channel,
+            type: 'subscribe'
+        };
+        sockjs.send(JSON.stringify(message));
+
+    }
     $scope.send = function () {
         var message = {
+            channel: $scope.channel,
             name: $scope.name,
             msg: $scope.message,
             type: 'msg'
@@ -31,6 +48,7 @@ angular.module('app', [])
     };
     sockjs.onopen = function () {
         console.log('Connected!');
+        $scope.subscribe();
     };
     sockjs.onmessage = function (e) {
         console.log(e);

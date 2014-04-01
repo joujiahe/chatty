@@ -9,7 +9,7 @@
         <div class="main" ng-controller="main" class="pure-g-r">
             <div class="pure-u-1-5"></div>
             <div class="content pure-u-3-5">
-                <h1>chatty ({{count}} users)</h1>
+                <a ng-href="{{channelUrl}}"><h1>{{channel}} ({{count}} users)</h1></a>
                 <div class="list">
                     <ul class="">
                         <li ng-repeat="message in messages">
